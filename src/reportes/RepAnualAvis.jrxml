@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RepAnualAvis" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a3901c30-203b-4e73-97b5-a6c22f17da17">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="anio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cantidad" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="gestion" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     avisos.`id` AS avisos_id,
+     avisos.`fecha` AS avisos_fecha,
+     avisos.`apPaterno` AS avisos_apPaterno,
+     avisos.`apMaterno` AS avisos_apMaterno,
+     avisos.`nombres` AS avisos_nombres,
+     avisos.`matricula` AS avisos_matricula,
+     avisos.`ultSalar` AS avisos_ultSalar,
+     avisos.`fechaBaja` AS avisos_fechaBaja,
+     avisos.`motBaja` AS avisos_motBaja,
+     avisos.`ruta` AS avisos_ruta
+FROM
+     `avisos` avisos
+WHERE YEAR(avisos.fecha)=$P!{gestion} ORDER BY fecha]]>
+	</queryString>
+	<field name="avisos_id" class="java.lang.Integer"/>
+	<field name="avisos_fecha" class="java.sql.Date"/>
+	<field name="avisos_apPaterno" class="java.lang.String"/>
+	<field name="avisos_apMaterno" class="java.lang.String"/>
+	<field name="avisos_nombres" class="java.lang.String"/>
+	<field name="avisos_matricula" class="java.lang.String"/>
+	<field name="avisos_ultSalar" class="java.lang.String"/>
+	<field name="avisos_fechaBaja" class="java.sql.Date"/>
+	<field name="avisos_motBaja" class="java.lang.String"/>
+	<field name="avisos_ruta" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="148" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="802" height="25" uuid="86a7707c-7c9c-4a85-800f-1e5f8be04c4f"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD MAYOR DE SAN SIMÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="35" width="802" height="25" uuid="7741396d-8877-4876-96ca-380bf1014cd5"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[DEPARTAMENTO DE PERSONAL ACADÉMICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="802" height="25" uuid="b7486c9d-1f7d-428b-a74e-b2925b523a2c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE AVISOS DE BAJA DE LOS ASEGURADOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="570" y="98" width="73" height="20" uuid="3798ce47-cd27-4f92-83cb-a86f08bc714a"/>
+				<textElement>
+					<font isBold="true" isItalic="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Realizado por:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="504" y="118" width="139" height="20" uuid="75cebdc5-f4f7-49be-9f68-f282b5e20de7"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Fecha generada del reporte:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="643" y="98" width="150" height="20" uuid="d7e3574a-94c0-432f-907b-82c7c4f3a73d"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Luis Fernando Viscarra Vargas]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="643" y="118" width="150" height="20" uuid="d97384c3-5e36-4f3c-8829-d92d08b8c908"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="417" y="98" width="45" height="20" uuid="5c79fd30-4e4f-4558-a5e0-3b4bb0594cd3"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Gestión:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="118" width="169" height="20" uuid="c8f64e58-72b1-4498-80e0-8477ca09dab4"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Cantidad de solvencias realizadas:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="462" y="98" width="100" height="20" uuid="622708ca-8cd4-4dc6-888f-4a19bfe171f7"/>
+				<textFieldExpression><![CDATA[$P{anio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="462" y="118" width="42" height="20" uuid="d5bf0eee-a879-4af6-82b6-3c2a26176a21"/>
+				<textFieldExpression><![CDATA[$P{cantidad}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="25" y="5" width="129" height="88" uuid="05dc018a-a498-493e-a420-307297d7910a"/>
+				<imageExpression><![CDATA["src\\M (1).jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="691" y="0" width="102" height="98" uuid="5d424789-cc56-4ba2-84de-30e2ff9c27ab"/>
+				<imageExpression><![CDATA["src\\LOGOPA.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="10" y="108" width="235" height="30" uuid="b8cdd1d6-df92-44e8-acb5-2c8dbbffca50"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA["Todos los registros guardados han sido generados con el Nº Patronal: 02-921001"]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="70" height="20" uuid="eaa6ca0f-64a3-40a5-b39d-f93ea56fca3c"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[EMISIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="0" width="85" height="20" uuid="fee15490-1e15-420a-9531-074893a9a448"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[AP. PATERNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="142" height="20" uuid="f484e2af-7366-4664-b1a8-92f4ed5117c1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[ÚLTIMO SALARIO COTIZADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="702" y="0" width="100" height="20" uuid="14d9bc46-3f76-474f-97f3-2a84c00a582f"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[MOTIVO DE BAJA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="0" width="85" height="20" uuid="dd3b3136-1bd2-4135-92ce-fbc1d71dad77"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[AP. MATERNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="0" width="110" height="20" uuid="bba37c73-1712-40a2-b1e8-d09dfdba69df"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[NOMBRE(S)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="0" width="85" height="20" uuid="514167ad-b2a3-4ecd-b4c1-7896ed65dea6"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[MATRICULA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="609" y="0" width="85" height="20" uuid="3cfd933c-6be0-4f20-899e-59fb5cdcb17b"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[FECHA DE BAJA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="13" y="0" width="44" height="20" uuid="0928e5b9-eec5-4778-bfe2-7f138b95a0d3"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{avisos_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="0" width="85" height="30" uuid="ab01cb95-c7ba-494e-8dba-db64c98b0f91"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{avisos_apPaterno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="155" y="0" width="85" height="29" uuid="5c1610ae-33d8-4d88-9084-f97fdd759d50"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{avisos_apMaterno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="142" height="30" uuid="16e2a372-f9bb-4670-9886-43f07daf712f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{avisos_ultSalar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="629" y="0" width="44" height="20" uuid="4d31f7b3-eecf-47a2-9dc9-e425e5ac4953"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{avisos_fechaBaja}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="29" width="802" height="1" uuid="3ba3506e-2aef-4412-8ea8-176ddfa683c4"/>
+			</line>
+			<textField>
+				<reportElement x="240" y="0" width="110" height="30" uuid="b01f31b3-e5a2-4d22-bbf7-5be512added7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{avisos_nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="0" width="85" height="30" uuid="6232a237-1552-4e90-8e5b-2c9310fd5fbe"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{avisos_matricula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="702" y="1" width="100" height="28" uuid="7a2e1a68-efc6-4f0d-8d13-72e7d690f170"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{avisos_motBaja}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="329" y="8" width="80" height="20" uuid="aea1b81f-d7be-42b5-849b-7de8fea4c787"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="409" y="8" width="40" height="20" uuid="837b5ed3-0e3f-4311-ae13-e12d82e34c23"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
